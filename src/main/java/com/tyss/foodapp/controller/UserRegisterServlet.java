@@ -35,17 +35,18 @@ public class UserRegisterServlet extends HttpServlet {
 		user.setPassword(password);
 		User user1 = service.saveUser(user);
 		RequestDispatcher dispatcher = null;
+		
 		if (user1 != null) {
 			PrintWriter writer = resp.getWriter();
 			writer.write(
 					"<h1 style='color:darkgreen;'>Registration Successfull... <br><br>You Can Login Now...!!!</h1>");
 			dispatcher = req.getRequestDispatcher("userlogin.jsp");
-			dispatcher.include(req, resp);
+			dispatcher.forward(req, resp);
 		} else {
 			PrintWriter writer = resp.getWriter();
 			writer.write("<h1 style='color:red;'>Fail to Register...</h1>");
 			dispatcher = req.getRequestDispatcher("userregister.jsp");
-			dispatcher.include(req, resp);
+			dispatcher.forward(req, resp);
 		}
 
 	}

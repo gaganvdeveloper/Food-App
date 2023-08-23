@@ -1,7 +1,5 @@
 package com.tyss.foodapp.util;
 
 public enum Status {
-	
-	PREPARING,ONTHEWAY,DELIVERD;
-	
+	ACCEPTED,PREPARING,ONTHEWAY,DELIVERD,NOTACCEPTED;	
 }

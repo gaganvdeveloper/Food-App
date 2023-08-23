@@ -1,5 +1,7 @@
 package com.tyss.foodapp.service;
 
+import java.util.List;
+
 import com.tyss.foodapp.dto.Item;
 
 public interface ItemService {
@@ -12,4 +14,5 @@ public interface ItemService {
 
 	boolean deleteItemById(int id);
 
+	List<Item> findAllItems();
 }

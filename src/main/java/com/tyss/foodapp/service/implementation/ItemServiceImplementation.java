@@ -1,5 +1,7 @@
 package com.tyss.foodapp.service.implementation;
 
+import java.util.List;
+
 import com.tyss.foodapp.dao.implementation.ItemDaoImplementation;
 import com.tyss.foodapp.dto.Item;
 import com.tyss.foodapp.service.ItemService;
@@ -26,6 +28,11 @@ public class ItemServiceImplementation implements ItemService {
 	@Override
 	public boolean deleteItemById(int id) {
 		return dao.deleteItem(id);
+	}
+
+	@Override
+	public List<Item> findAllItems() {
+		return dao.findAll();
 	}
 
 }

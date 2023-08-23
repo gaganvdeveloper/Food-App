@@ -1,5 +1,7 @@
 package com.tyss.foodapp.dao;
 
+import java.util.List;
+
 import com.tyss.foodapp.dto.Item;
 
 public interface ItemDao {
@@ -12,4 +14,5 @@ public interface ItemDao {
 
 	public boolean deleteItem(int id);
 
+	public List<Item> findAll();
 }
