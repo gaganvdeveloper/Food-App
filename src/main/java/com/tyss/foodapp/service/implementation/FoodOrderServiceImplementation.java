@@ -1,5 +1,7 @@
 package com.tyss.foodapp.service.implementation;
 
+import java.util.List;
+
 import com.tyss.foodapp.dao.implementation.FoodOrderDaoImplementation;
 import com.tyss.foodapp.dto.FoodOrder;
 import com.tyss.foodapp.dto.Item;
@@ -36,6 +38,11 @@ public class FoodOrderServiceImplementation implements FoodOrderService {
 			totalPrice += item.getPrice();
 		}
 		return totalPrice;
+	}
+
+	@Override
+	public List<FoodOrder> findAllFoodOrders() {
+		return dao.findAllFoodOrders();
 	}
 
 }

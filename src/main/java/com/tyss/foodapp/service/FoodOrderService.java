@@ -1,5 +1,7 @@
 package com.tyss.foodapp.service;
 
+import java.util.List;
+
 import com.tyss.foodapp.dto.FoodOrder;
 
 public interface FoodOrderService {
@@ -13,4 +15,7 @@ public interface FoodOrderService {
 	boolean deleteFoodOrderById(int id);
 	
 	double calculateTotalFoodOrderPrice(FoodOrder foodOrder);
+	
+	List<FoodOrder> findAllFoodOrders();
+	
 }

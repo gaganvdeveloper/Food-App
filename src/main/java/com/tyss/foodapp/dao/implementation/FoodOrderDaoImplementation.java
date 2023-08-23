@@ -1,8 +1,11 @@
 package com.tyss.foodapp.dao.implementation;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.tyss.foodapp.dao.FoodOrderDao;
 import com.tyss.foodapp.dto.FoodOrder;
@@ -52,6 +55,12 @@ public class FoodOrderDaoImplementation implements FoodOrderDao {
 			return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<FoodOrder> findAllFoodOrders() {
+		Query query = manager.createQuery("from FoodOrder f");
+		return query.getResultList();
 	}
 
 }

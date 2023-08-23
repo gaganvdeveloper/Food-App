@@ -1,3 +1,6 @@
+<%@page import="com.tyss.foodapp.dto.FoodOrder"%>
+<%@page
+	import="com.tyss.foodapp.service.implementation.FoodOrderServiceImplementation"%>
 <%@page import="com.tyss.foodapp.dto.Item"%>
 <%@page import="java.util.List"%>
 <%@page
@@ -13,6 +16,8 @@
 
 <%
 ItemServiceImplementation service = new ItemServiceImplementation();
+
+FoodOrderServiceImplementation fservice = new FoodOrderServiceImplementation();
 
 List<Item> items = service.findAllItems();
 %>
@@ -90,8 +95,7 @@ List<Item> items = service.findAllItems();
 			%>
 		</table>
 
-		<br>
-		<br>
+		<br> <br>
 
 		<button
 			style="color: white; background-color: darkgreen; border: none; outline: none; font-size: 15px; border-radius: 7px; font-weight: bold; padding: 10px;"
@@ -140,21 +144,82 @@ List<Item> items = service.findAllItems();
 	<br>
 	<hr>
 
+	<h2>All Food Order's :</h2>
+
+	<table border="1" cellspacing="1" cellpadding="10">
+		<tr>
+			<th>FoodOrder ID</th>
+			<th>Customer Name</th>
+			<th>Customer Phone</th>
+			<th>Status</th>
+			<th>Orderd Time</th>
+			<th>Delivery Time</th>
+			<th>Items</th>
+		</tr>
 
 
+		<%
+		for (FoodOrder foodOrder : fservice.findAllFoodOrders()) {
+		%>
+		<tr>
+			<td><%=foodOrder.getId()%></td>
+			<td><%=foodOrder.getCustomerName()%></td>
+			<td><%=foodOrder.getContactNumber()%></td>
+			<td><%=foodOrder.getStatus()%></td>
+			<td><%=foodOrder.getOrderCreatedTime()%></td>
+			<td><%=foodOrder.getOrderDeliveryTime()%></td>
+			<td>
+				<table border="1" cellpadding="10" cellspacing="1"
+					style="text-align: center;">
+
+					<tr>
+
+						<th>ID</th>
+						<th>Product ID</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th>Quantity</th>
+						<th>Price</th>
+						<th>Delete</th>
+					</tr>
+
+
+					<%
+					for (Item item : foodOrder.getItems()) {
+					%>
+
+					<tr>
+						<td><%=item.getId()%></td>
+						<td><%=item.getProductId()%></td>
+						<td><%=item.getName()%></td>
+						<td><%=item.getType()%></td>
+						<td><%=item.getQuantity()%></td>
+						<td><%=item.getPrice()%></td>
+						<td><a href="deleteitem?id=<%=item.getId()%>"><button
+									type="button"
+									style="color: white; background-color: crimson; border: none; outline: none; font-size: 15px; border-radius: 7px; font-weight: bold; padding: 5px;">Delete</button></a>
+						</td>
+					</tr>
+					<%
+					}
+					%>
+				</table>
+			</td>
+
+		</tr>
+		<%
+		}
+		%>
+	</table>
+
+	<br>
+	<br>
+	<hr>
 	<br>
 	<br>
 	<br>
 	<br>
 	<br>
-
-
-
-
-
-
-
-
 
 
 

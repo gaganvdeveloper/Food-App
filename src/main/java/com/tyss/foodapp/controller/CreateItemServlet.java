@@ -38,8 +38,9 @@ public class CreateItemServlet extends HttpServlet {
 
 		RequestDispatcher dispatcher = null;
 		if (item1 != null) {
-			dispatcher = req.getRequestDispatcher("staffhome.jsp");
-			dispatcher.forward(req, resp);
+//			dispatcher = req.getRequestDispatcher("staffhome.jsp");
+//			dispatcher.forward(req, resp);
+			resp.sendRedirect("staffhome.jsp");
 		} else {
 			resp.getWriter().write("<h1 style='color:red;'>Unable To Add Item</h1>");
 			dispatcher = req.getRequestDispatcher("staffhome.jsp");
